@@ -4,36 +4,33 @@ import "../../css/Option.sass";
 
 const Option = ( props ) => {
     
-    // render option
+    // This option will be render.
     let option = null;
 
-    // Decoration line style
-    const textStyle = props.checked == true ? {
+    // Decoration line style.
+    const textStyle = props.checked === true ? {
         textDecorationLine: 'line-through',
     } : null;
 
     if( props.closed ) {
-        // Delete option
+        // Delete option status.
         option = ( null )
 
     }else if( props.showOption ) {
-        /* 正常模式 */
+        // Normal status.
         option = (
-          
             <div>
-                <input className="checkbox" type="checkbox" checked={props.checked} onChange={props.click} />
+                <input className="checkbox" type="checkbox" checked={props.checked} onChange={props.changeChecked} />
                 <div className="text" style={textStyle}>{props.content}</div>
-                <MDBBtn className="modify" color="info" className="add-option" size="sm" onClick={props.changeMode}>修改</MDBBtn>
-                <MDBBtn className="delete" color="danger" className="add-option" size="sm" onClick={props.deleteOption}>刪除</MDBBtn>
+                <MDBBtn className="modify" color="info" size="sm" onClick={props.changeMode}>修改</MDBBtn>
+                <MDBBtn className="delete" color="danger" size="sm" onClick={props.deleteOption}>刪除</MDBBtn>
                 <div className="action"></div>
             </div>
-
         );
 
     }else if( !props.showOption ) {
-        /* 修改中模式 */
+        // modified status.
         option = (
-        
             <div>
                 <input
                     type="text"
@@ -44,17 +41,14 @@ const Option = ( props ) => {
                 />
                 <MDBBtn color="info" className="add-option" onClick={props.changeMode}>送出</MDBBtn>
             </div>
-
         );
 
     }
         
-    return (
-        
+    return (   
         <div className="main-option" >
             { option }       
         </div>
-
     )
 };
 

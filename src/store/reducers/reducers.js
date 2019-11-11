@@ -1,82 +1,72 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     options: [
-        // 新增的範例格式為 {id:1, checked: false, content: "", closed:false, showOption:true}
-        // {id:1, checked: false, content: "", closed:false, showOption:true}
+        // Example: {id:1, checked: false, content: "", closed:false, showOption:true}
     ]
 }
 
 const reducer = (state = initialState, action) => {
 
+    let payload = action.options
     switch(action.type) {
-          // 新增option
+
+          // add option.
         case actionTypes.APPEND_OPTION: {
-            // this.addDataFromServer("請修改");
             return {
+                ...state,
                 options:[ ...state.options, 
-                        {checked: false, content: "請修改", closed:false, showOption:true } ]
+                        {id: action.id, checked: false, content: action.text+action.id, closed:false, showOption:true } ]
             }
         }
-          // 切換狀態, 正常/修改option狀態 （id）
+          // change status, Normal/Modified status.
         case actionTypes.CHANGE_MODE: {
 
-            console.log(action.id)
-
             const option = state.options.find( (option) =>  option.id===action.id );
-            
             option.showOption ^= true;
-        
             const options = [...state.options]
             options[options.indexOf(option)] = option
-        
-            return {options: options}
+            return {...state, options: options}
         
         }
-        // 修改option的內容(同步)    event
+        // modify option content.    
         case actionTypes.CHANGE_CONTENT: {
 
             const option = state.options.find( (option) =>  option.id===action.id );
             const options = [...state.options]
-        
             options[options.indexOf(option)].content = action.event.target.value;
-        
-            return {options: options}
+            return {...state, options: options}
         
         }
-        // 勾選checkbox    event
+        // interact with checkbox.    
         case actionTypes.CHANGE_CHECKED: {
 
             const option = state.options.find( (option) =>  option.id===action.id );
             const options = Object.assign([], state.options);
-            // const options = this.state.options;
-            options[options.indexOf(option)].checked = action.event.target.checked;  
-            // options[id].checked = event.target.checked;  
-        
-            return {options: options}
+            options[options.indexOf(option)].checked = action.event.target.checked;   
+            return {...state, options: options}
         
         }
-        // 刪除option
+        // delete option.
         case actionTypes.DELETE_OPTION: {
 
             const option = state.options.find( (option) =>  option.id===action.id );
-            const options = Object.assign([], state.options);
-              
-            options[options.indexOf(option)].closed = true;
+            const options = Object.assign([], state.options);             
+            options[options.indexOf(option)].closed = true;       
+            return {...state, options: options}
         
-            return {options: options}
-        
+        }
+        // update checklist.
+        case actionTypes.SET_CHECKLIST: {
+            return {...state, ...payload}     
+        }
+
+        default: {
+            return state;
         }
 
     }
 
-    return state;
 }
-
-
-
-
-
-
 
 export default reducer;
