@@ -1,8 +1,8 @@
 ## checklist app F2E 
 
-**F2E:** React  
-**Backend:** Java - Spring Boot  
-**Database:** AWS - DynamoDB  
+**F2E:** [React](https://github.com/yangyangisyou/checklist-app)  
+**Backend:** [Java - Spring Boot](https://github.com/104corp/y19fresh-checklist-backend)  
+**Database:** [AWS - DynamoDB](https://docs.aws.amazon.com/zh_tw/amazondynamodb/latest/developerguide/GettingStarted.Java.html)  
  
 This project will show you how to use redux and other middlewares to improve project more clear and Maintainability.
 
