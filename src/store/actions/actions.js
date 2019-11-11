@@ -107,6 +107,7 @@ export const updateChecklist = (payload) => {
     .catch((error) => {
         alert(ERROR_MESSAGE_FROM_SERVER)
         console.error(error)
+        
     })
 
     return {

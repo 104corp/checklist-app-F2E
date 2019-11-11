@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { MDBBtn } from "mdbreact";
-import Options from "./options/Options.js";
+import Options from "../components/options/Options.js";
 import "../css/Checklist.sass";
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/actions/actions';

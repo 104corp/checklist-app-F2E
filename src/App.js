@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import Checklist from './components/Checklist.js';
+import Checklist from './containers/Checklist.js';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
