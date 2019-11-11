@@ -1,9 +1,9 @@
 ## checklist app F2E 
 
-F2E: React 
-Backend: Java - Spring Boot 
-Database: AWS - DynamoDB 
-
+**F2E:** React  
+**Backend:** Java - Spring Boot  
+**Database:** AWS - DynamoDB  
+ 
 This project will show you how to use redux and other middlewares to improve project more clear and Maintainability.
 
 ### How to use this project 
